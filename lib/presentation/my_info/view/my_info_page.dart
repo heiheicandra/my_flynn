@@ -1,5 +1,7 @@
 import "package:flutter/material.dart";
 import "package:get/get.dart";
+import "package:my_flynn/common_widgets/animated_column.dart";
+import "package:my_flynn/presentation/basic_info/view/basic_info_page.dart";
 import "package:my_flynn/presentation/my_info/widgets/my_info_item.dart";
 import "package:my_flynn/utils/num_extension.dart";
 
@@ -22,40 +24,34 @@ class MyInfoPage extends StatelessWidget {
           ),
           onPressed: () => Get.back(),
         ),
-        title: const Text(
-          '내정보' /* My Profile/My Info*/,
-          style: TextStyle(
-            color: Colors.black,
-            fontSize: 18,
-            fontWeight: FontWeight.w500,
-          ),
-        ),
-        centerTitle: false,
       ),
       body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
-        child: Column(
+        padding: EdgeInsets.symmetric(horizontal: 5.w(context)),
+        child: AnimatedColumn(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
+            Text(
+              '내정보' /* My Info*/,
+              style: TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontSize: 18.sp(context),
+              ),
+            ),
             SizedBox(height: 2.h(context)),
             MyInfoItem(
               title: '기본 정보' /* Basic Information*/,
               onTap: () {
-                debugPrint('기본 정보 tapped');
+                Get.toNamed(BasicInfoPage.routeName);
               },
             ),
             SizedBox(height: 1.h(context)),
-            MyInfoItem(
+            const MyInfoItem(
               title: '비밀번호 설정' /* Password Settings*/,
-              onTap: () {
-                debugPrint('비밀번호 설정 tapped');
-              },
             ),
             SizedBox(height: 1.h(context)),
-            MyInfoItem(
+            const MyInfoItem(
               title: '관심 카테고리' /* Interest Categories*/,
-              onTap: () {
-                debugPrint('관심 카테고리 tapped');
-              },
             ),
           ],
         ),

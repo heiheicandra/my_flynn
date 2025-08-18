@@ -62,7 +62,7 @@ class AppButton extends StatelessWidget {
           ),
           vertical: (paddingVertical != null).either(
             trueV: () => paddingVertical?.h(context) ?? 0,
-            falseV: () => 4.32.h(context),
+            falseV: () => 2.h(context),
           ),
         ),
         onPressed: isDisabled ? null : onPressed,
@@ -70,7 +70,7 @@ class AppButton extends StatelessWidget {
           title,
           style: textStyle ??
               TextStyle(
-                fontSize: 15.sp(context),
+                fontSize: 14.sp(context),
                 fontWeight: FontWeight.bold,
                 color: textColor,
               ),

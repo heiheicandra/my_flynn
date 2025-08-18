@@ -6,6 +6,7 @@ import "package:my_flynn/presentation/campaign/view/completed_list.dart";
 import "package:my_flynn/presentation/campaign/view/in_progress_list.dart";
 import "package:my_flynn/utils/case_state.dart";
 import "package:my_flynn/utils/color_scheme.dart";
+import "package:my_flynn/utils/num_extension.dart";
 
 class CampaignPage extends GetView<CampaignControllerInterface> {
   static const String routeName = "/campaign-page";
@@ -23,42 +24,56 @@ class CampaignPage extends GetView<CampaignControllerInterface> {
           backgroundColor: Colors.white,
           elevation: 0,
           leading: const BackButton(color: Colors.black),
-          title: const Text(
-            "캠페인 매칭" /*Campaign Matching*/,
-            style: TextStyle(color: Colors.black, fontWeight: FontWeight.bold),
-          ),
-          bottom: const TabBar(
-            indicatorColor: AppColor.primary,
-            labelColor: Colors.black,
-            unselectedLabelColor: Colors.grey,
-            tabs: [
-              Tab(text: "신청" /*Apply*/),
-              Tab(text: "진행중" /*In Progress*/),
-              Tab(text: "완료" /*Completed*/),
-            ],
-          ),
         ),
-        body: TabBarView(
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            Obx(() {
-              final state = controller.viewModel.appliedList.value;
-              return AppliedList(
-                data: state.data,
-                isLoading: state is LoadingCase,
-              );
-            }),
-            Obx(() {
-              final state = controller.viewModel.inProgressList.value;
-              return InProgressList(
-                  data: state.data, isLoading: state is LoadingCase);
-            }),
-            Obx(() {
-              final state = controller.viewModel.completedList.value;
-              return CompletedList(
-                data: state.data,
-                isLoading: state is LoadingCase,
-              );
-            }),
+            Padding(
+              padding: EdgeInsets.only(left: 5.w(context)),
+              child: Text(
+                "캠페인 매칭" /*Campaign Matching*/,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.sp(context),
+                ),
+              ),
+            ),
+            const TabBar(
+              indicatorColor: AppColor.primary,
+              labelColor: Colors.black,
+              unselectedLabelColor: Colors.grey,
+              tabs: [
+                Tab(text: "신청" /*Apply*/),
+                Tab(text: "진행중" /*In Progress*/),
+                Tab(text: "완료" /*Completed*/),
+              ],
+            ),
+            Expanded(
+              child: TabBarView(
+                children: [
+                  Obx(() {
+                    final state = controller.viewModel.appliedList.value;
+                    return AppliedList(
+                      data: state.data,
+                      isLoading: state is LoadingCase,
+                    );
+                  }),
+                  Obx(() {
+                    final state = controller.viewModel.inProgressList.value;
+                    return InProgressList(
+                        data: state.data, isLoading: state is LoadingCase);
+                  }),
+                  Obx(() {
+                    final state = controller.viewModel.completedList.value;
+                    return CompletedList(
+                      data: state.data,
+                      isLoading: state is LoadingCase,
+                    );
+                  }),
+                ],
+              ),
+            ),
           ],
         ),
       ),

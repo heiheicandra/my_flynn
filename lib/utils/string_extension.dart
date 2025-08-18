@@ -1,3 +1,5 @@
+import 'package:my_flynn/core/permission_enum.dart';
+
 extension StringExtension on String? {
   String get dashIfEmpty {
     final str = this ?? '';
@@ -9,8 +11,14 @@ extension StringExtension on String? {
 
   bool get isImage {
     final lower = (this ?? "").toLowerCase();
-    return lower.endsWith("png") ||
-        lower.endsWith("jpg") ||
-        lower.endsWith("jpeg");
+    return PlatformPermission.camera.allowedExtensions.any((e) => lower == e) ||
+        PlatformPermission.gallery.allowedExtensions.any((e) => lower == e);
+  }
+
+  bool get isDocument {
+    final lower = (this ?? "").toLowerCase();
+    return PlatformPermission.document.allowedExtensions
+            .any((e) => lower == e) ||
+        PlatformPermission.gallery.allowedExtensions.any((e) => lower == e);
   }
 }

@@ -1,12 +1,13 @@
 import 'package:flutter/material.dart';
+import 'package:my_flynn/utils/num_extension.dart';
 
 class MyInfoItem extends StatelessWidget {
   final String title;
-  final VoidCallback onTap;
+  final VoidCallback? onTap;
   const MyInfoItem({
     super.key,
     required this.title,
-    required this.onTap,
+    this.onTap,
   });
 
   @override
@@ -28,8 +29,8 @@ class MyInfoItem extends StatelessWidget {
           children: [
             Text(
               title,
-              style: const TextStyle(
-                fontSize: 16,
+              style: TextStyle(
+                fontSize: 16.sp(context),
                 fontWeight: FontWeight.w400,
                 color: Colors.black87,
               ),

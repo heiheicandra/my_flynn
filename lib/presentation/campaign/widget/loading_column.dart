@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flynn/common_widgets/animated_column.dart';
 import 'package:my_flynn/utils/bool_extension.dart';
 import 'package:my_flynn/utils/num_extension.dart';
 import 'package:skeletonizer/skeletonizer.dart';
@@ -10,7 +11,7 @@ class LoadingColumn extends StatelessWidget {
   Widget build(BuildContext context) {
     return SingleChildScrollView(
       padding: const EdgeInsets.all(8),
-      child: Column(
+      child: AnimatedColumn(
         children: List.generate(5, (i) {
           return Skeletonizer(
             enabled: true,

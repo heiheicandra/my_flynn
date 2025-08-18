@@ -10,15 +10,6 @@ class PermissionSettingsDialog extends StatelessWidget {
   final PlatformPermission permission;
   const PermissionSettingsDialog({super.key, required this.permission});
 
-  String get _feature {
-    switch (permission) {
-      case PlatformPermission.camera:
-        return "Camera";
-      case PlatformPermission.gallery:
-        return "Gallery";
-    }
-  }
-
   @override
   Widget build(BuildContext context) {
     return Dialog(
@@ -42,7 +33,7 @@ class PermissionSettingsDialog extends StatelessWidget {
             ),
             SizedBox(height: 1.h(context)),
             Text(
-              '$_feature Permission Denied',
+              '${permission.label} Permission Denied',
               textAlign: TextAlign.center,
               style: TextStyle(
                 fontSize: 17.sp(context),

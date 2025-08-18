@@ -21,6 +21,10 @@ class MyApp extends StatelessWidget {
       getPages: AppRoute.routes,
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
+        appBarTheme: const AppBarThemeData(
+          backgroundColor: Colors.white,
+          surfaceTintColor: Colors.white,
+        ),
         fontFamily: 'NotoSans',
       ),
       enableLog: true,

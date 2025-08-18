@@ -3,6 +3,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:my_flynn/presentation/profile/view/profile_page.dart";
 import "package:my_flynn/utils/color_scheme.dart";
+import "package:my_flynn/utils/num_extension.dart";
 
 class NotFoundPage extends StatelessWidget {
   static const String routeName = "/notFound-page";
@@ -28,19 +29,19 @@ class NotFoundPage extends StatelessWidget {
               color: Colors.grey,
             ),
             const SizedBox(height: 20),
-            const Text(
+            Text(
               '404',
               style: TextStyle(
-                fontSize: 48,
+                fontSize: 48.sp(context),
                 fontWeight: FontWeight.bold,
                 color: Colors.grey,
               ),
             ),
             const SizedBox(height: 10),
-            const Text(
+            Text(
               'Page Not Found',
               style: TextStyle(
-                fontSize: 24,
+                fontSize: 24.sp(context),
                 fontWeight: FontWeight.w500,
                 color: Colors.grey,
               ),

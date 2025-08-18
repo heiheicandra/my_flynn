@@ -1,15 +1,19 @@
 import 'dart:io';
 
 import 'package:device_info_plus/device_info_plus.dart';
+import 'package:file_picker/file_picker.dart';
 import 'package:get/get.dart';
 import 'package:image_picker/image_picker.dart';
 import 'package:my_flynn/common_widgets/permission_settings_dialog.dart';
 import 'package:my_flynn/core/permission_enum.dart';
+import 'package:my_flynn/utils/string_extension.dart';
 import 'package:permission_handler/permission_handler.dart';
 
 class ResultFile {
   late File file;
   String fileName = '';
+
+  ResultFile({required this.file, required this.fileName});
 
   ResultFile.xfile(XFile result) {
     (this).file = File(result.path);
@@ -18,6 +22,28 @@ class ResultFile {
 }
 
 class MediaHandler {
+  ///Use [ResultFile.file] to acccess the file
+  static Future<ResultFile?> pickDocument() async {
+    final granted = await _Permission().request(PlatformPermission.document);
+    if (!granted) return null;
+
+    final result = await FilePicker.platform.pickFiles(
+      type: FileType.custom,
+      allowedExtensions: PlatformPermission.document.allowedExtensions,
+    );
+
+    if (result != null &&
+        result.files.isNotEmpty &&
+        result.files.first.path != null &&
+        result.files.first.path.isDocument) {
+      return ResultFile(
+        file: File(result.files.first.path!),
+        fileName: result.files.first.path!,
+      );
+    }
+    return null;
+  }
+
   ///Use [ResultFile.file] to acccess the file
   static Future<ResultFile?> gallery() async {
     var valid = await _Permission().request(PlatformPermission.gallery);
@@ -71,6 +97,19 @@ class _Permission {
         break;
       case PlatformPermission.camera:
         permission = Permission.camera;
+        break;
+      case PlatformPermission.document:
+        if (Platform.isIOS) {
+          permission = Permission.storage;
+        } else {
+          final deviceInfoPlugin = DeviceInfoPlugin();
+          final deviceInfo = await deviceInfoPlugin.androidInfo;
+          if (deviceInfo.version.sdkInt >= 30) {
+            permission = Permission.manageExternalStorage;
+          } else {
+            permission = Permission.storage;
+          }
+        }
         break;
     }
 
