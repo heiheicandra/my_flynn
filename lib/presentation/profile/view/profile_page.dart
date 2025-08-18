@@ -1,10 +1,10 @@
-//coverage:ignore-file
 import "dart:io";
 
 import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:my_flynn/common_widgets/animated_column.dart";
 import "package:my_flynn/common_widgets/request_image_dialog.dart";
+import "package:my_flynn/presentation/campaign/view/campaign_page.dart";
 import "package:my_flynn/presentation/profile/model/profile_statistic.dart";
 import "package:my_flynn/presentation/profile/widgets/menu_item.dart";
 import "package:my_flynn/presentation/profile/widgets/stat_item.dart";
@@ -140,54 +140,61 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                   final data = state.data ?? ProfileStatistic();
                   return Skeletonizer(
                     enabled: state is LoadingCase,
+                    ignorePointers: state is LoadingCase,
                     child: Skeleton.shade(
-                      child: Container(
-                        margin: const EdgeInsets.symmetric(horizontal: 20),
-                        padding: const EdgeInsets.all(20),
-                        decoration: BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.circular(12),
-                          boxShadow: [
-                            BoxShadow(
-                              color: Colors.grey.withValues(alpha: 0.1),
-                              blurRadius: 10,
-                              offset: const Offset(0, 2),
-                            ),
-                          ],
-                        ),
-                        child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              '나의 관찰인' /*My Observers*/,
-                              style: TextStyle(
-                                fontSize: 16.sp(context),
-                                fontWeight: FontWeight.w500,
-                                color: Colors.black,
+                      child: GestureDetector(
+                        onTap: () {
+                          Get.toNamed(CampaignPage.routeName);
+                        },
+                        child: Container(
+                          margin: const EdgeInsets.symmetric(horizontal: 20),
+                          padding: const EdgeInsets.all(20),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(12),
+                            boxShadow: [
+                              BoxShadow(
+                                color: Colors.grey.withValues(alpha: 0.1),
+                                blurRadius: 10,
+                                offset: const Offset(0, 2),
                               ),
-                            ),
-                            const SizedBox(height: 16),
-                            Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceAround,
-                              children: [
-                                ProfileStatItem(
-                                  number: '${data.applied}',
-                                  label: '신청' /*Applied*/,
-                                  color: AppColor.primary,
+                            ],
+                          ),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              Text(
+                                '나의 관찰인' /*My Observers*/,
+                                style: TextStyle(
+                                  fontSize: 16.sp(context),
+                                  fontWeight: FontWeight.w500,
+                                  color: Colors.black,
                                 ),
-                                ProfileStatItem(
-                                  number: '${data.inProgress}',
-                                  label: '진행중' /*In Progress*/,
-                                  color: AppColor.primary,
-                                ),
-                                ProfileStatItem(
-                                  number: '${data.completed}',
-                                  label: '완료' /*Completed*/,
-                                  color: AppColor.primary,
-                                ),
-                              ],
-                            )
-                          ],
+                              ),
+                              const SizedBox(height: 16),
+                              Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceAround,
+                                children: [
+                                  ProfileStatItem(
+                                    number: '${data.applied}',
+                                    label: '신청' /*Applied*/,
+                                    color: AppColor.primary,
+                                  ),
+                                  ProfileStatItem(
+                                    number: '${data.inProgress}',
+                                    label: '진행중' /*In Progress*/,
+                                    color: AppColor.primary,
+                                  ),
+                                  ProfileStatItem(
+                                    number: '${data.completed}',
+                                    label: '완료' /*Completed*/,
+                                    color: AppColor.primary,
+                                  ),
+                                ],
+                              )
+                            ],
+                          ),
                         ),
                       ),
                     ),
