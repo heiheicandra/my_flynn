@@ -5,6 +5,7 @@ import "package:get/get.dart";
 import "package:my_flynn/common_widgets/animated_column.dart";
 import "package:my_flynn/common_widgets/request_image_dialog.dart";
 import "package:my_flynn/presentation/campaign/view/campaign_page.dart";
+import "package:my_flynn/presentation/my_info/view/my_info_page.dart";
 import "package:my_flynn/presentation/profile/model/profile_statistic.dart";
 import "package:my_flynn/presentation/profile/widgets/menu_item.dart";
 import "package:my_flynn/presentation/profile/widgets/stat_item.dart";
@@ -42,7 +43,7 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                       mainAxisSize: MainAxisSize.min,
                       children: [
                         Text(
-                          '안녕하세요,', //Greetings,
+                          '안녕하세요,' /*Greetings,*/,
                           style: TextStyle(
                             fontSize: 16.sp(context),
                             color: Colors.grey,
@@ -220,33 +221,36 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                     ),
                   ],
                 ),
-                child: const Column(
+                child: Column(
                   children: [
                     ProfileMenuItem(
+                      onTap: () {
+                        Get.toNamed(MyInfoPage.routeName);
+                      },
                       icon: Icons.person_outline,
                       title: '내 정보', /*My Information*/
                     ),
-                    ProfileMenuItem(
+                    const ProfileMenuItem(
                       icon: Icons.public,
                       title: '공지사항', /*Announcements*/
                     ),
-                    ProfileMenuItem(
+                    const ProfileMenuItem(
                       icon: Icons.chat_bubble_outline,
                       title: '1:1문의', /*1:1 Inquiry*/
                     ),
-                    ProfileMenuItem(
+                    const ProfileMenuItem(
                       icon: Icons.help_outline,
                       title: 'FAQ', /*FAQ*/
                     ),
-                    ProfileMenuItem(
+                    const ProfileMenuItem(
                       icon: Icons.description_outlined,
                       title: '약관 및 정책', /*Terms and Policies*/
                     ),
-                    ProfileMenuItem(
+                    const ProfileMenuItem(
                       icon: Icons.logout,
                       title: '로그아웃', /*Logout*/
                     ),
-                    ProfileMenuItem(
+                    const ProfileMenuItem(
                       icon: Icons.delete_outline,
                       title: '회원탈퇴', /*Account Deletion*/
                     ),
