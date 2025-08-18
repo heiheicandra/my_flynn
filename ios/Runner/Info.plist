@@ -45,5 +45,9 @@
 	<true/>
 	<key>UIApplicationSupportsIndirectInputEvents</key>
 	<true/>
+	<key>NSCameraUsageDescription</key>
+	<string>Camera permission is required for direct image capture.</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>This app requires access all photo for image selection.</string>
 </dict>
 </plist>

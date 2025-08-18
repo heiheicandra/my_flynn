@@ -1,0 +1,14 @@
+
+# FVM Version Cache
+.fvm/
+.dart_tool/
+build/
+android/gradlew
+android/local.properties
+android/.gradle/
+ios/Flutter/flutter_export_environment.sh
+ios/Flutter/Generated.xcconfig
+ios/Flutter/ephemeral/flutter_lldb_helper.py
+ios/Flutter/ephemeral/flutter_lldbinit
+pubspec.lock
+android/local.properties

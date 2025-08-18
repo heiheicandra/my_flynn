@@ -1,0 +1,4 @@
+enum PlatformPermission {
+  camera,
+  gallery,
+}
