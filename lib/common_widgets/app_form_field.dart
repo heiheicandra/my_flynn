@@ -9,13 +9,16 @@ class AppFormField extends StatelessWidget {
   final bool enabled;
   final bool readOnly;
   final bool mandatory;
+  final bool obscureText;
+  final FocusNode? focusNode;
   final TextInputType textInputType;
-  final TextInputAction textInputAction;
+  final TextInputAction? textInputAction;
   final List<TextInputFormatter>? inputFormatters;
   final int? maxLength;
   final String? hintText;
   final Widget? suffix;
   final String? Function(String? value)? validator;
+  final Function(String value)? onFieldSubmitted;
   final Function(String value)? onChanged;
   final Function()? onTap;
 
@@ -26,8 +29,11 @@ class AppFormField extends StatelessWidget {
     bool? enabled,
     bool? readOnly,
     bool? mandatory,
+    bool? obscureText,
     TextInputType? textInputType,
-    TextInputAction? textInputAction,
+    this.onFieldSubmitted,
+    this.textInputAction,
+    this.focusNode,
     this.maxLength,
     this.hintText,
     this.suffix,
@@ -37,10 +43,10 @@ class AppFormField extends StatelessWidget {
     this.onTap,
   })  : label = label ?? '',
         enabled = enabled ?? true,
+        obscureText = obscureText ?? false,
         readOnly = readOnly ?? false,
         mandatory = mandatory ?? false,
-        textInputType = textInputType ?? TextInputType.text,
-        textInputAction = textInputAction ?? TextInputAction.next;
+        textInputType = textInputType ?? TextInputType.text;
 
   @override
   Widget build(BuildContext context) {
@@ -62,6 +68,8 @@ class AppFormField extends StatelessWidget {
           inputFormatters: inputFormatters,
           maxLength: maxLength,
           onChanged: onChanged,
+          onFieldSubmitted: onFieldSubmitted,
+          obscureText: obscureText,
           onTap: onTap,
           style: TextStyle(
             color: Colors.black,

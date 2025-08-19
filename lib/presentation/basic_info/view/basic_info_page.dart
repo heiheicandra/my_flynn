@@ -24,103 +24,122 @@ class BasicInfoPage extends GetView<BasicInfoControllerInterface> {
       ),
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Text(
-              "기본정보" /* Basic Information */,
-              style: TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontSize: 18.sp(context),
+        child: Form(
+          key: controller.viewModel.formKey,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Text(
+                "기본정보" /* Basic Information */,
+                style: TextStyle(
+                  color: Colors.black,
+                  fontWeight: FontWeight.bold,
+                  fontSize: 18.sp(context),
+                ),
               ),
-            ),
-            SizedBox(height: 2.h(context)),
-            AppFormField(
-              label: "아이디" /* ID */,
-              mandatory: true,
-              controller: controller.viewModel.idController,
-              enabled: false,
-              onChanged: (value) {
-                controller.buttonToggle();
-              },
-            ),
-            AppFormField(
-              label: "이메일" /* Email */,
-              mandatory: true,
-              controller: controller.viewModel.emailController,
-              onChanged: (value) {
-                controller.buttonToggle();
-              },
-            ),
-            //! Phone Number start
-            const FormLabel(
-              label: "휴대폰 번호" /* Phone number */,
-              mandatory: true,
-            ),
-            Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Expanded(
-                  flex: 2,
-                  child: Obx(() => AppFormField(
-                        controller: controller.viewModel.phoneController,
-                        textInputType: const TextInputType.numberWithOptions(),
-                        inputFormatters: [
-                          PhoneNumberFormatter(),
-                        ],
-                        enabled: controller.viewModel.phoneNumberDisable.value,
-                        onChanged: (value) {
-                          controller.buttonToggle();
-                        },
-                      )),
-                ),
-                SizedBox(
-                  width: 5.w(context),
-                ),
-                Expanded(
-                  child: AppButton(
-                    title: "변경하기" /* Change */,
-                    onPressed: controller.togglePhoneNUmberAvailability,
+              SizedBox(height: 2.h(context)),
+              AppFormField(
+                label: "아이디" /* ID */,
+                mandatory: true,
+                controller: controller.viewModel.idController,
+                enabled: false,
+                textInputAction: TextInputAction.next,
+                onChanged: (value) {
+                  controller.buttonToggle();
+                },
+              ),
+              AppFormField(
+                label: "이메일" /* Email */,
+                mandatory: true,
+                controller: controller.viewModel.emailController,
+                textInputAction: TextInputAction.next,
+                onChanged: (value) {
+                  controller.buttonToggle();
+                },
+              ),
+              //! Phone Number start
+              const FormLabel(
+                label: "휴대폰 번호" /* Phone number */,
+                mandatory: true,
+              ),
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Expanded(
+                    flex: 2,
+                    child: Obx(() => AppFormField(
+                          controller: controller.viewModel.phoneController,
+                          textInputType:
+                              const TextInputType.numberWithOptions(),
+                          inputFormatters: [
+                            PhoneNumberFormatter(),
+                          ],
+                          enabled:
+                              !controller.viewModel.phoneNumberDisable.value,
+                          textInputAction: TextInputAction.next,
+                          onChanged: (value) {
+                            controller.buttonToggle();
+                          },
+                        )),
                   ),
-                ),
-              ],
-            ),
-            //! Phone Number end
-            AppFormField(
-              label: "닉네임" /* Nickname */,
-              controller: controller.viewModel.nicknameController,
-            ),
-            AppFormField(
-              label: "인스타그램 아이디" /* Instagram ID */,
-              controller: controller.viewModel.instagramController,
-            ),
-            AppFormField(
-              label: "대표 작업 링크" /* Main work link */,
-              controller: controller.viewModel.linkController,
-            ),
-            AppFormField(
-              label: "포트폴리오" /* Portfolio */,
-              mandatory: true,
-              controller: controller.viewModel.portfolioController,
-              readOnly: true,
-              suffix: const Icon(Icons.attach_file),
-              onTap: controller.pickFile,
-              onChanged: (value) {
-                controller.buttonToggle();
-              },
-            ),
-            const SizedBox(height: 32),
-            Obx(() => AppButton(
-                  title: "저장하기" /* Save */,
-                  isFillWidth: true,
-                  borderRadius: BorderRadius.circular(12),
-                  onPressed: () {
-                    // TODO: implement save
-                  },
-                  isDisabled: !controller.viewModel.canSave.value,
-                )),
-          ],
+                  SizedBox(
+                    width: 5.w(context),
+                  ),
+                  Expanded(
+                    child: AppButton(
+                      title: "변경하기" /* Change */,
+                      onPressed: controller.togglePhoneNUmberAvailability,
+                    ),
+                  ),
+                ],
+              ),
+              //! Phone Number end
+              AppFormField(
+                label: "닉네임" /* Nickname */,
+                controller: controller.viewModel.nicknameController,
+                textInputAction: TextInputAction.next,
+              ),
+              AppFormField(
+                label: "인스타그램 아이디" /* Instagram ID */,
+                controller: controller.viewModel.instagramController,
+                textInputAction: TextInputAction.next,
+              ),
+              AppFormField(
+                label: "대표 작업 링크" /* Main work link */,
+                controller: controller.viewModel.linkController,
+                textInputAction: TextInputAction.done,
+              ),
+              AppFormField(
+                label: "포트폴리오" /* Portfolio */,
+                mandatory: true,
+                controller: controller.viewModel.portfolioController,
+                readOnly: true,
+                suffix: const Icon(Icons.attach_file),
+                onTap: controller.pickFile,
+                onChanged: (value) {
+                  controller.buttonToggle();
+                },
+              ),
+              const SizedBox(height: 32),
+              Obx(() => AppButton(
+                    title: "저장하기" /* Save */,
+                    isFillWidth: true,
+                    borderRadius: BorderRadius.circular(12),
+                    onPressed: () {
+                      Get.snackbar(
+                        "Saved",
+                        "Button CLicked",
+                        backgroundColor: Colors.green,
+                        icon: const Icon(
+                          Icons.check_circle,
+                          color: Colors.white,
+                        ),
+                      );
+                    },
+                    isDisabled: !controller.viewModel.canSave.value,
+                  )),
+            ],
+          ),
         ),
       ),
     );

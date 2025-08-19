@@ -10,6 +10,8 @@ class BasicInfoViewModel {
   TextEditingController? linkController;
   TextEditingController? portfolioController;
 
-  final phoneNumberDisable = false.obs;
+  GlobalKey<FormState>? formKey;
+
+  final phoneNumberDisable = true.obs;
   final canSave = false.obs;
 }

@@ -3,6 +3,7 @@ import 'package:get/get.dart';
 import 'package:my_flynn/core/route.dart';
 import 'package:my_flynn/presentation/not_found/not_found_page.dart';
 import 'package:my_flynn/presentation/splash_page/view/splash_page.dart';
+import 'package:my_flynn/utils/scroll_behavior.dart';
 
 void main() {
   runApp(const MyApp());
@@ -19,6 +20,7 @@ class MyApp extends StatelessWidget {
       navigatorKey: Get.key,
       initialRoute: SplashPage.routeName,
       getPages: AppRoute.routes,
+      scrollBehavior: const CustomScrollBehavior(),
       theme: ThemeData(
         scaffoldBackgroundColor: Colors.white,
         appBarTheme: const AppBarThemeData(

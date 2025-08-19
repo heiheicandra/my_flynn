@@ -50,6 +50,10 @@
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>This app requires access all photo for image selection.</string>
 	<key>NSDocumentsFolderUsageDescription</key>
-<string>This app needs access to your documents to upload files.</string>
+	<string>This app needs access to your documents to upload files.</string>
+	<key>UIFileSharingEnabled</key>
+	<true/>
+	<key>LSSupportsOpeningDocumentsInPlace</key>
+	<true/>
 </dict>
 </plist>

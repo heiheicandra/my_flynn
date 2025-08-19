@@ -25,7 +25,6 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: Colors.grey.shade50,
       body: SafeArea(
         child: SingleChildScrollView(
           padding: EdgeInsets.only(bottom: 2.h(context)),
@@ -100,7 +99,7 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                                 controller.viewModel.pickedImagePath.value;
                             if (data.isEmpty) {
                               return ColoredBox(
-                                color: Colors.grey.shade300,
+                                color: Colors.grey.shade100,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
@@ -151,23 +150,18 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                           margin: const EdgeInsets.symmetric(horizontal: 20),
                           padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.circular(12),
-                            boxShadow: [
-                              BoxShadow(
-                                color: Colors.grey.withValues(alpha: 0.1),
-                                blurRadius: 10,
-                                offset: const Offset(0, 2),
-                              ),
-                            ],
-                          ),
+                              color: Colors.grey.shade50,
+                              borderRadius: BorderRadius.circular(12),
+                              border: Border.all(
+                                color: Colors.grey.shade200,
+                              )),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
                               Text(
                                 '나의 관찰인' /*My Observers*/,
                                 style: TextStyle(
-                                  fontSize: 16.sp(context),
+                                  fontSize: 14.sp(context),
                                   fontWeight: FontWeight.w500,
                                   color: Colors.black,
                                 ),
@@ -176,16 +170,27 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                               Row(
                                 mainAxisAlignment:
                                     MainAxisAlignment.spaceAround,
+                                crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   ProfileStatItem(
                                     number: '${data.applied}',
                                     label: '신청' /*Applied*/,
                                     color: AppColor.primary,
                                   ),
+                                  Icon(
+                                    Icons.chevron_right,
+                                    color: Colors.grey.shade300,
+                                    size: 28.sp(context),
+                                  ),
                                   ProfileStatItem(
                                     number: '${data.inProgress}',
                                     label: '진행중' /*In Progress*/,
                                     color: AppColor.primary,
+                                  ),
+                                  Icon(
+                                    Icons.chevron_right,
+                                    color: Colors.grey.shade300,
+                                    size: 28.sp(context),
                                   ),
                                   ProfileStatItem(
                                     number: '${data.completed}',
@@ -208,19 +213,8 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
               ),
 
               // Menu items
-              Container(
-                margin: const EdgeInsets.symmetric(horizontal: 20),
-                decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.circular(12),
-                  boxShadow: [
-                    BoxShadow(
-                      color: Colors.grey.withValues(alpha: 0.1),
-                      blurRadius: 10,
-                      offset: const Offset(0, 2),
-                    ),
-                  ],
-                ),
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
                 child: Column(
                   children: [
                     ProfileMenuItem(

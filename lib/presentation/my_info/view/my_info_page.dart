@@ -2,6 +2,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:my_flynn/common_widgets/animated_column.dart";
 import "package:my_flynn/presentation/basic_info/view/basic_info_page.dart";
+import "package:my_flynn/presentation/change_password/view/change_password_page.dart";
 import "package:my_flynn/presentation/my_info/widgets/my_info_item.dart";
 import "package:my_flynn/utils/num_extension.dart";
 
@@ -46,7 +47,10 @@ class MyInfoPage extends StatelessWidget {
               },
             ),
             SizedBox(height: 1.h(context)),
-            const MyInfoItem(
+            MyInfoItem(
+              onTap: () {
+                Get.toNamed(ChangePasswordPage.routeName);
+              },
               title: '비밀번호 설정' /* Password Settings*/,
             ),
             SizedBox(height: 1.h(context)),

@@ -23,14 +23,14 @@ class BasicInfoController extends GetxController
   void onInit() {
     viewModel.idController = TextEditingController(text: "asdf123");
     viewModel.emailController = TextEditingController();
-    viewModel.phoneController = TextEditingController();
+    viewModel.phoneController = TextEditingController(text: "010-1234-5678");
     viewModel.nicknameController = TextEditingController();
     viewModel.instagramController = TextEditingController();
     viewModel.linkController = TextEditingController();
     viewModel.portfolioController = TextEditingController();
-
     //! bypass manual form fill
-    autoPopulate();
+    // autoPopulate();
+    viewModel.formKey = GlobalKey<FormState>();
 
     buttonToggle();
     super.onInit();
@@ -59,10 +59,21 @@ class BasicInfoController extends GetxController
 
   void autoPopulate() {
     viewModel.emailController?.text = "asdf123@naver.com";
-    viewModel.phoneController?.text = "010-1234-5678";
     viewModel.nicknameController?.text = "장발산";
     viewModel.instagramController?.text = "ffkdo_sa";
     viewModel.linkController?.text = "https://www.naver.com/";
     viewModel.portfolioController?.text = "포트폴리오.pdf";
+  }
+
+  @override
+  void onClose() {
+    viewModel.idController?.dispose();
+    viewModel.emailController?.dispose();
+    viewModel.phoneController?.dispose();
+    viewModel.nicknameController?.dispose();
+    viewModel.instagramController?.dispose();
+    viewModel.linkController?.dispose();
+    viewModel.portfolioController?.dispose();
+    super.onClose();
   }
 }

@@ -20,7 +20,7 @@ class ProfileStatItem extends StatelessWidget {
         Text(
           number,
           style: TextStyle(
-            fontSize: 28.sp(context),
+            fontSize: 18.sp(context),
             fontWeight: FontWeight.bold,
             color: color,
           ),

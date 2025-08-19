@@ -78,7 +78,7 @@ class MediaHandler {
 class _Permission {
   Future<bool> request(PlatformPermission source) async {
     late Permission permission;
-    late PermissionStatus status;
+    PermissionStatus? status;
     bool result = true;
 
     switch (source) {
@@ -106,16 +106,18 @@ class _Permission {
           final deviceInfo = await deviceInfoPlugin.androidInfo;
           if (deviceInfo.version.sdkInt >= 30) {
             permission = Permission.manageExternalStorage;
+            status = PermissionStatus.granted;
           } else {
             permission = Permission.storage;
           }
         }
         break;
     }
-
-    await permission.request().then((result) {
-      status = result;
-    });
+    if (status != null) {
+      await permission.request().then((result) {
+        status = result;
+      });
+    }
 
     if (status == PermissionStatus.restricted) {
       (this).dialog(source);
