@@ -14,7 +14,7 @@ class SplashPage extends GetView<SplashPageControllerInterface> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColor.primary,
+      backgroundColor: AppColor.splash,
       body: Center(
         child: Text(
           'MY FLYN',

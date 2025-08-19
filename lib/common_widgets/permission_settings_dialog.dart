@@ -28,7 +28,7 @@ class PermissionSettingsDialog extends StatelessWidget {
             SizedBox(height: 1.h(context)),
             Icon(
               Icons.phonelink_lock_outlined,
-              color: Colors.black,
+              color: AppColor.nuGrey1200,
               size: 10.h(context),
             ),
             SizedBox(height: 1.h(context)),
@@ -38,7 +38,7 @@ class PermissionSettingsDialog extends StatelessWidget {
               style: TextStyle(
                 fontSize: 17.sp(context),
                 fontWeight: FontWeight.bold,
-                color: Colors.black,
+                color: AppColor.nuGrey1200,
               ),
             ),
             SizedBox(height: 1.h(context)),
@@ -58,12 +58,12 @@ class PermissionSettingsDialog extends StatelessWidget {
                   paddingVertical: 1,
                   title: 'Cancel',
                   fillColor: Colors.white,
-                  textColor: AppColor.primary,
-                  borderColor: AppColor.primary,
+                  textColor: AppColor.primary600,
+                  borderColor: AppColor.primary600,
                   borderRadius: BorderRadius.circular(8),
                   textStyle: TextStyle(
                     fontSize: 15.sp(context),
-                    color: Colors.black,
+                    color: AppColor.nuGrey1200,
                   ),
                   onPressed: () => Get.back(),
                 ),

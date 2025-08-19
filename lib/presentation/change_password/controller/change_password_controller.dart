@@ -50,18 +50,18 @@ class ChangePasswordController extends GetxController
   @override
   void toggleConfirmPasswordObscure() {
     viewModel.confirmPasswordObscure.value =
-        viewModel.confirmPasswordObscure.value;
+        !viewModel.confirmPasswordObscure.value;
   }
 
   @override
   void toggleCurrentPasswordObscure() {
     viewModel.currentPasswordObscure.value =
-        viewModel.currentPasswordObscure.value;
+        !viewModel.currentPasswordObscure.value;
   }
 
   @override
   void toggleNewPasswordObscure() {
-    viewModel.newPasswordObscure.value = viewModel.newPasswordObscure.value;
+    viewModel.newPasswordObscure.value = !viewModel.newPasswordObscure.value;
   }
 
   @override

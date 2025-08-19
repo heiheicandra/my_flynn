@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:my_flynn/utils/bool_extension.dart';
+import 'package:my_flynn/utils/color_scheme.dart';
 import 'package:my_flynn/utils/num_extension.dart';
 
 class AppFormField extends StatelessWidget {
@@ -72,7 +73,7 @@ class AppFormField extends StatelessWidget {
           obscureText: obscureText,
           onTap: onTap,
           style: TextStyle(
-            color: Colors.black,
+            color: AppColor.nuGrey1200,
             fontSize: 14.sp(context),
             fontWeight: FontWeight.w500,
           ),
@@ -82,52 +83,52 @@ class AppFormField extends StatelessWidget {
             hintText: hintText,
             hintStyle: TextStyle(
               color: enabled.either(
-                trueV: () => Colors.grey.shade500,
-                falseV: () => Colors.black,
+                trueV: () => AppColor.nuGrey500,
+                falseV: () => AppColor.nuGrey1200,
               ),
               fontSize: 14.sp(context),
               fontWeight: FontWeight.w500,
             ),
             border: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
-                color: Colors.grey.shade600,
+              borderSide: const BorderSide(
+                color: AppColor.nuGrey200,
               ),
             ),
             enabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
-                color: Colors.grey.shade600,
+              borderSide: const BorderSide(
+                color: AppColor.nuGrey200,
               ),
             ),
             disabledBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
-              borderSide: BorderSide(
-                color: Colors.grey.shade600,
+              borderSide: const BorderSide(
+                color: AppColor.nuGrey200,
               ),
             ),
             fillColor: enabled.either(
               trueV: () => Colors.white,
-              falseV: () => Colors.grey.shade300,
+              falseV: () => AppColor.nuGrey100,
             ),
             enabled: enabled,
             errorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Colors.red,
+                color: AppColor.secondary150,
               ),
             ),
             focusedBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Colors.black,
+                color: AppColor.nuGrey1200,
                 width: 1.5,
               ),
             ),
             focusedErrorBorder: OutlineInputBorder(
               borderRadius: BorderRadius.circular(8),
               borderSide: const BorderSide(
-                color: Colors.red,
+                color: AppColor.secondary150,
                 width: 1.5,
               ),
             ),
@@ -163,7 +164,7 @@ class FormLabel extends StatelessWidget {
               style: TextStyle(
                 fontSize: 14.sp(context),
                 fontWeight: FontWeight.w500,
-                color: Colors.black,
+                color: AppColor.nuGrey1200,
               ),
             ),
             if (mandatory)
@@ -172,7 +173,7 @@ class FormLabel extends StatelessWidget {
                 style: TextStyle(
                   fontSize: 14.sp(context),
                   fontWeight: FontWeight.w500,
-                  color: Colors.red,
+                  color: AppColor.secondary150,
                 ),
               ),
           ],

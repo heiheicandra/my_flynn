@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:my_flynn/core/route.dart';
+import 'package:my_flynn/generated/fonts.gen.dart';
 import 'package:my_flynn/presentation/not_found/not_found_page.dart';
 import 'package:my_flynn/presentation/splash_page/view/splash_page.dart';
 import 'package:my_flynn/utils/scroll_behavior.dart';
@@ -27,7 +28,7 @@ class MyApp extends StatelessWidget {
           backgroundColor: Colors.white,
           surfaceTintColor: Colors.white,
         ),
-        fontFamily: 'NotoSans',
+        fontFamily: FontFamily.pretendard,
       ),
       enableLog: true,
       unknownRoute: GetPage(

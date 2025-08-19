@@ -23,7 +23,9 @@ class CampaignPage extends GetView<CampaignControllerInterface> {
         appBar: AppBar(
           backgroundColor: Colors.white,
           elevation: 0,
-          leading: const BackButton(color: Colors.black),
+          leading: const BackButton(
+            color: AppColor.nuGrey1200,
+          ),
         ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
@@ -33,15 +35,15 @@ class CampaignPage extends GetView<CampaignControllerInterface> {
               child: Text(
                 "캠페인 매칭" /*Campaign Matching*/,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColor.nuGrey1200,
                   fontWeight: FontWeight.bold,
                   fontSize: 18.sp(context),
                 ),
               ),
             ),
             const TabBar(
-              indicatorColor: AppColor.primary,
-              labelColor: Colors.black,
+              indicatorColor: AppColor.primary600,
+              labelColor: AppColor.nuGrey1200,
               unselectedLabelColor: Colors.grey,
               tabs: [
                 Tab(text: "신청" /*Apply*/),

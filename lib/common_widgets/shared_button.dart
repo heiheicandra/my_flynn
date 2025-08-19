@@ -25,7 +25,7 @@ class AppButton extends StatelessWidget {
     this.isFillWidth = false,
     this.isDisabled = false,
     this.borderColor = Colors.transparent,
-    this.fillColor = AppColor.primary,
+    this.fillColor = AppColor.primary600,
     this.textColor = Colors.white,
     this.height,
     this.paddingVertical,
@@ -54,7 +54,7 @@ class AppButton extends StatelessWidget {
           ),
         ),
         color: fillColor,
-        disabledColor: const Color(0xFFE6E7E8),
+        disabledColor: AppColor.nuGrey300,
         padding: EdgeInsets.symmetric(
           horizontal: (paddingHorizontal != null).either(
             trueV: () => paddingHorizontal?.w(context) ?? 0,

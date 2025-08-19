@@ -2,6 +2,8 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:my_flynn/common_widgets/app_form_field.dart";
 import "package:my_flynn/common_widgets/shared_button.dart";
+import "package:my_flynn/generated/assets.gen.dart";
+import "package:my_flynn/utils/color_scheme.dart";
 import "package:my_flynn/utils/num_extension.dart";
 import "package:my_flynn/utils/phone_number_formatter.dart";
 import 'package:my_flynn/presentation/basic_info/controller/basic_info_controller.dart';
@@ -22,6 +24,7 @@ class BasicInfoPage extends GetView<BasicInfoControllerInterface> {
           onPressed: () => Get.back(),
         ),
       ),
+      resizeToAvoidBottomInset: false,
       body: SingleChildScrollView(
         padding: const EdgeInsets.all(16.0),
         child: Form(
@@ -32,7 +35,7 @@ class BasicInfoPage extends GetView<BasicInfoControllerInterface> {
               Text(
                 "기본정보" /* Basic Information */,
                 style: TextStyle(
-                  color: Colors.black,
+                  color: AppColor.nuGrey1200,
                   fontWeight: FontWeight.bold,
                   fontSize: 18.sp(context),
                 ),
@@ -114,7 +117,7 @@ class BasicInfoPage extends GetView<BasicInfoControllerInterface> {
                 mandatory: true,
                 controller: controller.viewModel.portfolioController,
                 readOnly: true,
-                suffix: const Icon(Icons.attach_file),
+                suffix: Assets.icons.file.svg(),
                 onTap: controller.pickFile,
                 onChanged: (value) {
                   controller.buttonToggle();
@@ -124,7 +127,6 @@ class BasicInfoPage extends GetView<BasicInfoControllerInterface> {
               Obx(() => AppButton(
                     title: "저장하기" /* Save */,
                     isFillWidth: true,
-                    borderRadius: BorderRadius.circular(12),
                     onPressed: () {
                       Get.snackbar(
                         "Saved",

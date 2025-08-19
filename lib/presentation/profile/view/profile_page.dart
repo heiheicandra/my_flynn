@@ -4,6 +4,7 @@ import "package:flutter/material.dart";
 import "package:get/get.dart";
 import "package:my_flynn/common_widgets/animated_column.dart";
 import "package:my_flynn/common_widgets/request_image_dialog.dart";
+import "package:my_flynn/generated/assets.gen.dart";
 import "package:my_flynn/presentation/campaign/view/campaign_page.dart";
 import "package:my_flynn/presentation/my_info/view/my_info_page.dart";
 import "package:my_flynn/presentation/profile/model/profile_statistic.dart";
@@ -71,7 +72,7 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                                     style: TextStyle(
                                       fontSize: 24.sp(context),
                                       fontWeight: FontWeight.bold,
-                                      color: Colors.black,
+                                      color: AppColor.nuGrey1200,
                                     ),
                                   ),
                                 ),
@@ -99,21 +100,20 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                                 controller.viewModel.pickedImagePath.value;
                             if (data.isEmpty) {
                               return ColoredBox(
-                                color: Colors.grey.shade100,
+                                color: AppColor.nuGrey100,
                                 child: Column(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Icon(
-                                      Icons.camera_alt_outlined,
-                                      size: 20.sp(context),
-                                      color: Colors.grey.shade600,
+                                    Assets.icons.ic5Camera.svg(
+                                      width: 20.sp(context),
+                                      height: 20.sp(context),
                                     ),
                                     const SizedBox(height: 4),
                                     Text(
                                       '이미지 등록' /*Image Registration*/,
                                       style: TextStyle(
                                         fontSize: 10.sp(context),
-                                        color: Colors.grey.shade600,
+                                        color: AppColor.nuGrey700,
                                       ),
                                     ),
                                   ],
@@ -150,11 +150,12 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                           margin: const EdgeInsets.symmetric(horizontal: 20),
                           padding: const EdgeInsets.all(20),
                           decoration: BoxDecoration(
-                              color: Colors.grey.shade50,
-                              borderRadius: BorderRadius.circular(12),
-                              border: Border.all(
-                                color: Colors.grey.shade200,
-                              )),
+                            color: AppColor.nuGrey25,
+                            borderRadius: BorderRadius.circular(12),
+                            border: Border.all(
+                              color: AppColor.nuGrey100,
+                            ),
+                          ),
                           child: Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
@@ -163,7 +164,7 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                                 style: TextStyle(
                                   fontSize: 14.sp(context),
                                   fontWeight: FontWeight.w500,
-                                  color: Colors.black,
+                                  color: AppColor.nuGrey1200,
                                 ),
                               ),
                               const SizedBox(height: 16),
@@ -175,7 +176,7 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                                   ProfileStatItem(
                                     number: '${data.applied}',
                                     label: '신청' /*Applied*/,
-                                    color: AppColor.primary,
+                                    color: AppColor.primary600,
                                   ),
                                   Icon(
                                     Icons.chevron_right,
@@ -185,7 +186,7 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                                   ProfileStatItem(
                                     number: '${data.inProgress}',
                                     label: '진행중' /*In Progress*/,
-                                    color: AppColor.primary,
+                                    color: AppColor.primary600,
                                   ),
                                   Icon(
                                     Icons.chevron_right,
@@ -195,7 +196,7 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                                   ProfileStatItem(
                                     number: '${data.completed}',
                                     label: '완료' /*Completed*/,
-                                    color: AppColor.primary,
+                                    color: AppColor.primary600,
                                   ),
                                 ],
                               )
@@ -221,31 +222,52 @@ class ProfilePage extends GetView<ProfileControllerInterface> {
                       onTap: () {
                         Get.toNamed(MyInfoPage.routeName);
                       },
-                      icon: Icons.person_outline,
+                      icon: Assets.icons.user.svg(
+                        height: 16.sp(context),
+                        width: 16.sp(context),
+                      ),
                       title: '내 정보', /*My Information*/
                     ),
-                    const ProfileMenuItem(
-                      icon: Icons.public,
+                    ProfileMenuItem(
+                      icon: Assets.icons.note.svg(
+                        height: 16.sp(context),
+                        width: 16.sp(context),
+                      ),
                       title: '공지사항', /*Announcements*/
                     ),
-                    const ProfileMenuItem(
-                      icon: Icons.chat_bubble_outline,
+                    ProfileMenuItem(
+                      icon: Assets.icons.messages.svg(
+                        height: 16.sp(context),
+                        width: 16.sp(context),
+                      ),
                       title: '1:1문의', /*1:1 Inquiry*/
                     ),
-                    const ProfileMenuItem(
-                      icon: Icons.help_outline,
+                    ProfileMenuItem(
+                      icon: Assets.icons.messageQuestion.svg(
+                        height: 16.sp(context),
+                        width: 16.sp(context),
+                      ),
                       title: 'FAQ', /*FAQ*/
                     ),
-                    const ProfileMenuItem(
-                      icon: Icons.description_outlined,
+                    ProfileMenuItem(
+                      icon: Assets.icons.taskSquare.svg(
+                        height: 16.sp(context),
+                        width: 16.sp(context),
+                      ),
                       title: '약관 및 정책', /*Terms and Policies*/
                     ),
-                    const ProfileMenuItem(
-                      icon: Icons.logout,
+                    ProfileMenuItem(
+                      icon: Assets.icons.logout.svg(
+                        height: 16.sp(context),
+                        width: 16.sp(context),
+                      ),
                       title: '로그아웃', /*Logout*/
                     ),
-                    const ProfileMenuItem(
-                      icon: Icons.delete_outline,
+                    ProfileMenuItem(
+                      icon: Assets.icons.breakAway.svg(
+                        height: 16.sp(context),
+                        width: 16.sp(context),
+                      ),
                       title: '회원탈퇴', /*Account Deletion*/
                     ),
                   ],

@@ -1,8 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:my_flynn/utils/color_scheme.dart';
 import 'package:my_flynn/utils/num_extension.dart';
 
 class ProfileMenuItem extends StatelessWidget {
-  final IconData icon;
+  final Widget icon;
   final String title;
   final VoidCallback? onTap;
 
@@ -28,18 +29,14 @@ class ProfileMenuItem extends StatelessWidget {
         ),
         child: Row(
           children: [
-            Icon(
-              icon,
-              size: 24.sp(context),
-              color: Colors.grey.shade600,
-            ),
+            icon,
             const SizedBox(width: 16),
             Expanded(
               child: Text(
                 title,
                 style: TextStyle(
                   fontSize: 16.sp(context),
-                  color: Colors.black,
+                  color: AppColor.nuGrey1200,
                 ),
               ),
             ),

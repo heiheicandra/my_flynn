@@ -34,8 +34,9 @@ class RequestImageDialog extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: AppColor.primary),
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColor.primary600,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(
@@ -73,8 +74,9 @@ class RequestImageDialog extends StatelessWidget {
               },
               child: Container(
                 decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(8),
-                    color: AppColor.primary),
+                  borderRadius: BorderRadius.circular(8),
+                  color: AppColor.primary600,
+                ),
                 child: Padding(
                   padding: const EdgeInsets.all(8.0),
                   child: Row(

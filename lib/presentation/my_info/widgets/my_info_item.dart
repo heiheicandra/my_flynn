@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flynn/utils/color_scheme.dart';
 import 'package:my_flynn/utils/num_extension.dart';
 
 class MyInfoItem extends StatelessWidget {
@@ -32,7 +33,7 @@ class MyInfoItem extends StatelessWidget {
               style: TextStyle(
                 fontSize: 16.sp(context),
                 fontWeight: FontWeight.w400,
-                color: Colors.black87,
+                color: AppColor.nuGrey1200,
               ),
             ),
             const Icon(

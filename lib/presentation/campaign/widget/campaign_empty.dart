@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:my_flynn/utils/color_scheme.dart';
 import 'package:my_flynn/utils/num_extension.dart';
 
 class CampaignEmpty extends StatelessWidget {
@@ -15,7 +16,7 @@ class CampaignEmpty extends StatelessWidget {
           textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: 14.sp(context),
-            color: Colors.black,
+            color: AppColor.nuGrey1200,
           ),
         ),
       ),

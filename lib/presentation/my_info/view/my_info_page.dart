@@ -4,6 +4,7 @@ import "package:my_flynn/common_widgets/animated_column.dart";
 import "package:my_flynn/presentation/basic_info/view/basic_info_page.dart";
 import "package:my_flynn/presentation/change_password/view/change_password_page.dart";
 import "package:my_flynn/presentation/my_info/widgets/my_info_item.dart";
+import "package:my_flynn/utils/color_scheme.dart";
 import "package:my_flynn/utils/num_extension.dart";
 
 class MyInfoPage extends StatelessWidget {
@@ -21,7 +22,7 @@ class MyInfoPage extends StatelessWidget {
         leading: IconButton(
           icon: const Icon(
             Icons.arrow_back_ios,
-            color: Colors.black,
+            color: AppColor.nuGrey1200,
           ),
           onPressed: () => Get.back(),
         ),
@@ -34,7 +35,7 @@ class MyInfoPage extends StatelessWidget {
             Text(
               '내정보' /* My Info*/,
               style: TextStyle(
-                color: Colors.black,
+                color: AppColor.nuGrey1200,
                 fontWeight: FontWeight.bold,
                 fontSize: 18.sp(context),
               ),

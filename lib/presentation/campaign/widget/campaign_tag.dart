@@ -11,13 +11,13 @@ class CampaignTag extends StatelessWidget {
     return Container(
       padding: const EdgeInsets.symmetric(horizontal: 10, vertical: 4),
       decoration: BoxDecoration(
-        color: Colors.purple.shade50,
+        color: AppColor.primary50,
         borderRadius: BorderRadius.circular(20),
       ),
       child: Text(
         label,
         style: TextStyle(
-          color: AppColor.primary,
+          color: AppColor.primary600,
           fontSize: 8.sp(context),
         ),
       ),

@@ -17,7 +17,7 @@ class NotFoundPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: const Text('Page Not Found'),
-        backgroundColor: AppColor.primary,
+        backgroundColor: AppColor.primary600,
       ),
       body: Center(
         child: Column(
@@ -52,7 +52,7 @@ class NotFoundPage extends StatelessWidget {
                 Get.offAllNamed(ProfilePage.routeName);
               },
               style: ElevatedButton.styleFrom(
-                backgroundColor: AppColor.primary,
+                backgroundColor: AppColor.primary600,
                 padding:
                     const EdgeInsets.symmetric(horizontal: 30, vertical: 15),
               ),
